@@ -1,0 +1,652 @@
+body {
+    background-color: #FECF87;
+    font-family: "Aldrich";
+}
+
+
+
+
+
+/* Scenery - Defaul display is FullHD but I included version for other displays (1440p - 4K) */
+
+
+#sky {
+    position: absolute;
+    width: 100%;
+    height: 540px;
+    background: linear-gradient(180deg, rgba(214,158,118,1) 0%, rgba(254,207,135,1) 30%);
+}
+
+#sun {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    left: 131px;
+    top: 476px;
+    border-radius: 50%;
+    background: #FFF5F5;
+    box-shadow: 0px 0px 11px 15px #FED79D;
+}
+
+#backgroundRocks {
+    width: 100%;
+    position: absolute;
+    top: 486px;
+}
+
+#groundDay {
+    position: absolute;
+    background-color: #F97254;
+    width: 100%;
+    height: 272px;
+    top: 661px;
+}
+
+#foregroundRocks {
+    width: 100%;
+    position: absolute;
+    top: 650px;
+}
+
+
+
+
+
+/* Colony buildings + moving rover and animated rocket that takes off at the start */
+
+#station {
+    position: absolute;
+    left: 566px;
+    top: 660px;
+}
+
+#house1 {
+    position: absolute;
+    left: 713px;
+    top: 701px;
+}
+
+#house {
+    position: absolute;
+    left: 820px;
+    top: 707px;
+}
+
+#rover {
+    position: absolute;
+    top: 740px;
+    left: 300px;
+    animation: 15000ms drive alternate infinite ease-in-out;
+}
+
+@keyframes drive {
+  0% { 
+  	left: 300px; 
+  }
+  100% { 
+  	left: 1200px;
+  }
+}
+
+#rocket {
+    position: absolute;
+    left: 208px;
+    top: 650px;
+    animation: 5000ms liftoff forwards ease-in-out;
+}
+
+#smoke {
+    position: absolute;
+    left: 209px;
+    top: 701px;
+    animation: 2500ms vanish forwards ease-out;
+}
+
+@keyframes liftoff {
+    0% { 
+        top: 650px; 
+    }
+    25% {
+        transform: rotate(0deg);
+        left: 208px;
+    }
+    100% { 
+        top: -250px;
+        transform: rotate(10deg);
+        left: 280px;
+    }
+}
+
+@keyframes vanish {
+    0% { 
+        opacity: 100%;
+    }
+    100% { 
+        opacity: 0%;
+    }
+}
+
+
+
+
+
+
+/* Clock */
+
+
+#clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 540px;
+}
+
+#clockBackground {
+    z-index: 5;
+    width: 655px;
+    height: 287px;
+    box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clockContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.clockText {
+    width: 100%;
+    text-align: center;
+    margin: 0.1em;
+}
+
+#currentTime {
+    font-size: 96px;
+}
+
+#date, #day {
+    font-size: 32px;
+}
+
+
+
+/* Button */
+
+
+#buttonContainer {
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#changeTime {
+    z-index: 10;
+    padding: .7em;
+    background: none;
+    border: solid black;
+    cursor: pointer;
+    color: black;
+    font-family: Aldrich;
+    transition: background-color, transform 500ms;
+}
+
+#changeTime:hover {
+    background-color: white;
+    border: solid white;
+    color: black;
+    transform: scale(1.1);
+}
+
+
+
+
+
+/* Solarsystem with moving earth and mars */
+
+#solarsystem {
+    position: absolute;
+    left: 1500px;
+    top: 162px;
+}
+
+#earth{
+    position: absolute;
+    background:#3e9fd3;
+    left: 1594px;
+    top: 255px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: circleEarth 60s linear infinite;
+  }
+  
+@keyframes circleEarth {
+    0%{
+      transform: rotate(0deg) translate(70px);
+    }
+    100%{
+      transform: rotate(360deg) translate(70px);
+    }
+}
+
+#mars{
+    position: absolute;
+    background: #F97254;
+    left: 1601px;
+    top: 263px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: circleMars 113s linear infinite;
+  }
+  
+@keyframes circleMars {
+    0%{
+      transform: rotate(0deg) translate(90px);
+    }
+    100%{
+      transform: rotate(360deg) translate(90px);
+    }
+}
+
+
+
+
+
+
+
+/* Night scenery */
+
+#groundNight {
+    position: absolute;
+    background-color: #A02105;
+    width: 100%;
+    height: 272px;
+    top: 661px;
+}
+
+#nightSky {
+    position: absolute;
+    width: 100%;
+    height: 540px;
+    background: linear-gradient(180deg, #BD6D35 0%, #E78C01 44.14%);
+    display: none;
+}
+
+#visualsDay {
+    display: block;
+}
+
+#visualsNight {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* Responsive */
+
+
+@media all and (min-width: 3000px) {
+    #sun {
+        transform: scale(1.5);
+    }
+
+    #groundDay, #groundNight {
+        height: 450px;
+        top: 850px;
+    }
+
+    #foregroundRocks {
+        top: 750px;
+    }
+
+    #house {
+        transform:  scale(1.5);
+        left: 1350px;
+        top: 900px;
+    }
+
+    #house1 {
+        transform:  scale(1.5);
+        left: 1200px;
+        top: 900px;
+    }
+
+    #rover {
+        transform:  scale(1.5);
+        top: 950px;
+        animation: 12000ms drive alternate infinite ease-in-out;
+    }
+
+    @keyframes drive {
+        0% { 
+            left: 700px; 
+        }
+        100% { 
+            left: 1800px;
+        }
+      }
+
+    #station {
+        transform:  scale(1.5);
+        left: 950px;
+        top: 850px;
+    }
+
+    #rocket {
+        transform: scale(1.5);
+        left: 208px;
+        animation: 5000ms liftoff forwards ease-in;
+    }
+
+    @keyframes liftoff {
+        0% { 
+            top: 850px; 
+        }
+        25% {
+            transform: rotate(0deg) scale(1.5);
+            left: 208px;
+        }
+        100% { 
+            top: -250px;
+            transform: rotate(10deg) scale(1.5);
+            left: 280px;
+        }
+    }
+
+    #smoke {
+        position: absolute;
+        left: 209px;
+        top: 910px;
+    }
+
+    #solarsystem {
+        transform: scale(1.5);
+        position: absolute;
+        left: 2900px;
+    }
+    
+    #earth{
+        transform: scale(1.5);
+        left: 2995px;
+        top: 255px;
+        animation: circleEarth 60s linear infinite;
+      }
+      
+    @keyframes circleEarth {
+        0%{
+          transform: rotate(0deg) translate(110px);
+        }
+        100%{
+          transform: rotate(360deg) translate(110px);
+        }
+    }
+    
+    #mars{
+        transform: scale(1.5);
+        left: 3000px;
+        top: 265px;
+        animation: circleMars 113s linear infinite;
+      }
+      
+    @keyframes circleMars {
+        0%{
+          transform: rotate(0deg) translate(135px);
+        }
+        100%{
+          transform: rotate(360deg) translate(135px);
+        }
+    }
+
+    #clockBackground {
+        transform: scale(1.5);
+    }
+
+    #changeTime {
+        transform: scale(1.5);
+    }
+}
+
+
+
+
+
+@media all and (min-width: 2000px) {
+    #groundDay, #groundNight {
+        height: 450px;
+        top: 730px;
+    }
+
+    #house {
+        top: 750px;
+    }
+
+    #house1 {
+        top: 750px;
+    }
+
+    #rover {
+        top: 780px;
+        animation: 12000ms drive alternate infinite ease-in-out;
+    }
+
+    @keyframes drive {
+        0% { 
+            left: 500px; 
+        }
+        100% { 
+            left: 1200px;
+        }
+      }
+
+    #station {
+        top: 700px;
+    }
+
+    #rocket {
+        left: 208px;
+        animation: 5000ms liftoff forwards ease-in;
+    }
+
+    @keyframes liftoff {
+        0% { 
+            top: 700px; 
+        }
+        25% {
+            transform: rotate(0deg);
+            left: 208px;
+        }
+        100% { 
+            top: -250px;
+            transform: rotate(10deg);
+            left: 280px;
+        }
+    }
+
+    #smoke {
+        top: 750px;
+        animation: 2500ms vanish forwards ease-out;
+    }
+
+    @keyframes vanish {
+        0% { 
+            opacity: 100%;
+        }
+        100% { 
+            opacity: 0%;
+        }
+    }
+
+    #solarsystem {
+        left: 2000px;
+        top: 200px;
+    }
+    
+    #earth{
+        left: 2095px;
+        top: 295px;
+        animation: circleEarth 60s linear infinite;
+      }
+      
+    @keyframes circleEarth {
+        0%{
+          transform: rotate(0deg) translate(70px);
+        }
+        100%{
+          transform: rotate(360deg) translate(70px);
+        }
+    }
+    
+    #mars{
+        left: 2100px;
+        top: 300px;
+        animation: circleMars 113s linear infinite;
+      }
+      
+    @keyframes circleMars {
+        0%{
+          transform: rotate(0deg) translate(90px);
+        }
+        100%{
+          transform: rotate(360deg) translate(90px);
+        }
+    }
+}
+
+
+
+
+
+
+@media all and (max-width: 1500px) {
+    #sun {
+        top: 300px;
+    }
+
+    #sky, #nightSky {
+        height: 540px;
+    }
+
+    #groundDay, #groundNight {
+        top: 475px;
+        height: 200px;
+    }
+
+    #backgroundRocks {
+        top: 320px;
+        height: 176px;
+    }
+
+    #foregroundRocks {
+        top: 450px;
+    }
+
+    #house {
+        left: 500px;
+        top: 480px;
+    }
+
+    #house1 {
+        left: 430px;
+        top: 470px;
+    }
+
+    #rover {
+        top: 520px;
+        animation: 8000ms drive alternate infinite ease-in-out;
+    }
+
+    @keyframes drive {
+        0% { 
+            left: 200px; 
+        }
+        100% { 
+            left: 800px;
+        }
+      }
+
+    #station {
+        left: 300px;
+        top: 450px;
+    }
+
+    #rocket {
+        left: 170px;
+        animation: 3000ms liftoff forwards ease-in;
+    }
+
+    @keyframes liftoff {
+        0% { 
+            top: 450px; 
+        }
+        25% {
+            transform: rotate(0deg);
+            left: 170px;
+        }
+        100% { 
+            top: -250px;
+            transform: rotate(10deg);
+            left: 280px;
+        }
+    }
+
+    #smoke {
+        position: absolute;
+        left: 170px;
+        top: 500px;
+    }
+
+    #solarsystem {
+        position: absolute;
+        left: 1080px;
+        top: 100px;
+    }
+    
+    #earth{
+        left: 1175px;
+        top: 195px;
+        animation: circleEarth 60s linear infinite;
+      }
+      
+    @keyframes circleEarth {
+        0%{
+          transform: rotate(0deg) translate(70px);
+        }
+        100%{
+          transform: rotate(360deg) translate(70px);
+        }
+    }
+    
+    #mars{
+        left: 1180px;
+        top: 200px;
+        animation: circleMars 113s linear infinite;
+      }
+      
+    @keyframes circleMars {
+        0%{
+          transform: rotate(0deg) translate(90px);
+        }
+        100%{
+          transform: rotate(360deg) translate(90px);
+        }
+    }
+
+    #clock {
+        height: 300px;
+        transform: scale(0.8);
+        top: 100px;
+    }
+}
